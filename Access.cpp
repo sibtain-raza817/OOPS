@@ -48,6 +48,6 @@ int main()
     s1.setAge(20);
     s1.setrollNo(25);
     s1.setGrade("A+");
-    s1.getName();
+    s1.getName(); // this is getter function called 
 return 0;
 }

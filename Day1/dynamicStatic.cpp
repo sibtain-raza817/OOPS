@@ -32,4 +32,4 @@ int main()
     // Output: Raza 16 25 A+
 
     return 0;
-}
+} 
