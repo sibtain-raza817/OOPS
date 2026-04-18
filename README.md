@@ -134,6 +134,240 @@ Practiced encapsulation using getters/setters
 Learned static vs dynamic object creation
 🚀 What's Next?
 
+
+
+# 📘 OOPS Journey - Day 2
+
+Welcome to Day 2 of my Object-Oriented Programming (OOP) journey 🚀
+In this section, I explored **constructors, object copying, memory behavior, and object lifecycle** in C++.
+
+
+## 📅 Topics Covered
+
+* Introduction to Constructors
+* Default Constructor
+* Parameterized Constructor
+* `this` Keyword
+* Constructor Overloading
+* Inline Constructor
+* Copy Constructor
+* Assignment Operator (`=`)
+* Const Function Overloading
+* Destructor & Call Order
+
+
+## 🔹 1. Constructor (Introduction)
+
+A **constructor** is a special function:
+
+* Automatically called when an object is created
+* Has the same name as the class
+* Does not have a return type
+
+👉 It is mainly used to **initialize object data**
+
+
+## 🔹 2. Default Constructor
+
+A constructor with no parameters.
+cpp
+Customer() {
+    name = "Default";
+    acc_no = 0;
+    balance = 0;
+}
+
+👉 Called automatically when object is created without arguments.
+
+## 🔹 3. Parameterized Constructor
+
+Allows passing values while creating objects.
+cpp
+Customer(string name, int acc_no, int balance) {
+    this->name = name;
+    this->acc_no = acc_no;
+    this->balance = balance;
+}
+
+## 🔹 4. `this` Keyword
+
+* Refers to the current object
+* Helps resolve naming conflicts between variable
+cpp
+this->name = name;
+
+## 🔹 5. Constructor Overloading
+
+Multiple constructors in the same class with different parameters.
+cpp
+Customer(string name, int acc_no);
+Customer(string name, int acc_no, int balance);
+
+👉 Provides flexibility in object creation.
+
+## 🔹 6. Inline Constructor
+
+Uses **initializer list** and can be defined in one line.
+cpp
+inline Customer(string x, int y, int z)
+    : name(x), acc_no(y), balance(z) {}
+
+👉 Improves readability and may improve performance.
+
+## 🔹 7. Copy Constructor
+
+Creates a new object by copying an existing object.
+cpp
+Customer(const Customer &obj) {
+    name = obj.name;
+    acc_no = obj.acc_no;
+    balance = obj.balance;
+}
+
+👉 Important when dealing with memory and objects.
+
+## 🔹 8. Assignment Operator (`=`)
+
+Used to copy values between already created objects.
+
+cpp
+A2 = A1;
+
+👉 Difference from copy constructor:
+
+* Copy constructor → during initialization
+* Assignment operator → after initialization
+
+## 🔹 9. Const Function Overloading
+
+Functions behave differently when marked `const`.
+cpp
+void display() const {
+    cout << name << endl;
+}
+👉 Const functions cannot modify object data.
+
+
+## 🔹 10. Destructor
+
+A special function:
+
+* Called automatically when object goes out of scope
+* Used for cleanup
+
+cpp
+~Customer() {
+    cout << "Destructor called\n";
+}
+
+
+## 🔹 11. Destructor Call Order
+
+* Objects are destroyed in **reverse order of creation**
+* Follows **LIFO (Last In First Out)** principle
+
+
+
+## 💻 Complete Implementation
+
+cpp
+#include <iostream>
+using namespace std;
+
+class Customer {
+    string name;
+    int acc_no;
+    int balance;
+
+public:
+    // Default Constructor
+    Customer() {
+        cout << "Default Constructor Called\n";
+        name = "Raza";
+        acc_no = 123;
+        balance = 200000;
+    }
+
+    // Parameterized Constructor
+    Customer(string name, int acc_no, int balance) {
+        cout << "Parameterized Constructor Called\n";
+        this->name = name;
+        this->acc_no = acc_no;
+        this->balance = balance;
+    }
+
+    // Inline Constructor (Initializer List)
+    inline Customer(string x, int y, int z, bool flag)
+        : name(x), acc_no(y), balance(z) {
+        cout << "Inline Constructor Called\n";
+    }
+
+    // Constructor Overloading
+    Customer(string n, int acc) {
+        cout << "Overloaded Constructor Called\n";
+        name = n;
+        acc_no = acc;
+        balance = 0;
+    }
+
+    // Copy Constructor
+    Customer(const Customer &obj) {
+        cout << "Copy Constructor Called\n";
+        name = obj.name;
+        acc_no = obj.acc_no;
+        balance = obj.balance;
+    }
+
+    // Display Function
+    void display() {
+        cout << name << " " << acc_no << " " << balance << endl;
+    }
+
+    // Const Function Overloading
+    void display() const {
+        cout << "Const Display -> " << name << endl;
+    }
+
+    // Destructor
+    ~Customer() {
+        cout << "Destructor Called for " << name << endl;
+    }
+};
+
+int main() {
+    Customer A1;                         // Default
+    Customer A2("Ritesh", 1993, 760);   // Parameterized
+    Customer A3("Ritesh", 23323);       // Overloaded
+
+    Customer A4 = A2;                   // Copy Constructor
+
+    A3 = A1;                            // Assignment Operator
+
+    A1.display();
+    A2.display();
+    A3.display();
+    A4.display();
+
+    return 0;
+}
+
+
+## 📌 Key Takeaways
+
+* Constructors automatically initialize objects
+* `this` keyword helps avoid naming conflicts
+* Copy constructor and assignment operator are different
+* Destructor handles cleanup automatically
+* Object lifecycle follows stack (LIFO order)
+
+
+
+## 🚀 Next Plan (Day 3)
+
+* Inheritance (Single, Multiple, Multilevel)
+* Access Control in Inheritance
+* Real-world examples
+
 In upcoming days, I will cover:
 
 Constructors & Destructors
@@ -141,9 +375,8 @@ Inheritance
 Polymorphism
 Abstraction
 
-Stay tuned 💡
+## 🧠 Author
 
-🧠 Author
-
-Sibtain Raza
+**Sibtain Raza**
 B.Tech CSE Student | Learning OOP step by step
+
