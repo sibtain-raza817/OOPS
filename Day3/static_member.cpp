@@ -42,7 +42,7 @@ int Customer::total_count = 0;        // Define and initialize the static member
 
 int main() {                           // Main function: program starts here
     Customer A1("Raza", 20000);        // Create a Customer object A1 with name "Raza" and balance 20000
-                                       // Constructor also increments total_count (so total_count becomes 1)
+                                      // Constructor also increments total_count (so total_count becomes 1)
 
     A1.deposit(2000);                  // Call deposit method: add 2000 to A1's balance
     A1.display();                      // Call display method: print A1's name and updated balance
