@@ -362,18 +362,192 @@ int main() {
 
 
 
-## 🚀 Next Plan (Day 3)
+# 📘 OOPS Journey - Day 3
 
-* Inheritance (Single, Multiple, Multilevel)
-* Access Control in Inheritance
+Today I learned some important OOP concepts that improve **data control, memory efficiency, and code design**.
+
+---
+
+## 📅 Topics Covered
+
+* Static Data Member
+* Static Member Function
+* Encapsulation
+* Abstraction
+
+---
+
+## 🔹 1. Static Data Member
+
+* Shared among all objects of a class
+* Only **one copy** exists in memory
+* Declared inside class, defined outside
+
+```cpp
+class Customer {
+public:
+    static int totalCustomers;
+
+    Customer() {
+        totalCustomers++;
+    }
+};
+
+// Definition (important)
+int Customer::totalCustomers = 0;
+```
+
+👉 All objects use the same `totalCustomers`
+
+---
+
+## 🔹 2. Static Member Function
+
+* Can access only **static data members**
+* Called using class name (no object needed)
+
+```cpp
+class Customer {
+public:
+    static int totalCustomers;
+
+    static void showTotal() {
+        cout << "Total Customers: " << totalCustomers << endl;
+    }
+};
+```
+
+```cpp
+Customer::showTotal();
+```
+
+---
+
+## 🔹 3. Encapsulation
+
+* Wrapping data + functions together
+* Hiding data using **private access**
+
+```cpp
+class Customer {
+private:
+    int balance;
+
+public:
+    void setBalance(int b) {
+        balance = b;
+    }
+
+    int getBalance() {
+        return balance;
+    }
+};
+```
+
+👉 Protects data from direct access
+
+---
+
+## 🔹 4. Abstraction
+
+* Showing only **essential details**
+* Hiding internal implementation
+
+```cpp
+class BankAccount {
+public:
+    void deposit(int amount) {
+        // internal logic hidden
+        cout << "Amount Deposited\n";
+    }
+};
+```
+
+👉 User doesn’t know internal working
+
+---
+
+## 💻 Complete Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Customer {
+private:
+    string name;
+    int balance;
+
+public:
+    static int totalCustomers;
+
+    // Constructor
+    Customer(string name, int balance) {
+        this->name = name;
+        this->balance = balance;
+        totalCustomers++;
+    }
+
+    // Encapsulation (Getter/Setter)
+    void setBalance(int b) {
+        balance = b;
+    }
+
+    int getBalance() {
+        return balance;
+    }
+
+    // Static Function
+    static void showTotalCustomers() {
+        cout << "Total Customers: " << totalCustomers << endl;
+    }
+
+    // Abstraction
+    void deposit(int amount) {
+        balance += amount;
+        cout << amount << " Deposited\n";
+    }
+
+    void display() {
+        cout << name << " " << balance << endl;
+    }
+};
+
+// Static member definition
+int Customer::totalCustomers = 0;
+
+int main() {
+    Customer A1("Raza", 1000);
+    Customer A2("Ali", 2000);
+
+    A1.deposit(500);
+    A1.display();
+
+    Customer::showTotalCustomers();
+
+    return 0;
+}
+```
+
+---
+
+## 📌 Key Takeaways
+
+* Static variables are shared across all objects
+* Static functions belong to class, not objects
+* Encapsulation = Data protection
+* Abstraction = Hide complexity
+
+---
+
+## 🚀 Next (Day 4)
+
+* Inheritance
+* Types of Inheritance
 * Real-world examples
 
-In upcoming days, I will cover:
+---
 
-Constructors & Destructors
-Inheritance
-Polymorphism
-Abstraction
 
 ## 🧠 Author
 
