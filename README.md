@@ -406,7 +406,7 @@ int Customer::totalCustomers = 0;
 * Can access only **static data members**
 * Called using class name (no object needed)
 
-```cpp
+cpp
 class Customer {
 public:
     static int totalCustomers;
@@ -415,20 +415,18 @@ public:
         cout << "Total Customers: " << totalCustomers << endl;
     }
 };
-```
 
-```cpp
+
+cpp
 Customer::showTotal();
-```
 
----
 
 ## 🔹 3. Encapsulation
 
 * Wrapping data + functions together
 * Hiding data using **private access**
 
-```cpp
+cpp
 class Customer {
 private:
     int balance;
@@ -442,11 +440,10 @@ public:
         return balance;
     }
 };
-```
+
 
 👉 Protects data from direct access
 
----
 
 ## 🔹 4. Abstraction
 
@@ -461,7 +458,7 @@ public:
         cout << "Amount Deposited\n";
     }
 };
-```
+
 
 👉 User doesn’t know internal working
 
@@ -527,9 +524,6 @@ int main() {
 
     return 0;
 }
-```
-
----
 
 ## 📌 Key Takeaways
 
@@ -542,12 +536,164 @@ int main() {
 
 ## 🚀 Next (Day 4)
 
-* Inheritance
-* Types of Inheritance
-* Real-world examples
+# 📘 OOPS Journey - Day 4 & Day 5
+
+In these days, I learned how classes can **reuse properties and build relationships**, making code more scalable and structured.
 
 ---
 
+## 📅 Day 4: Inheritance
+
+### 🔹 What is Inheritance?
+
+Inheritance allows a class (**child/derived class**) to acquire properties and behavior of another class (**parent/base class**).
+
+👉 Promotes:
+
+* Code reusability
+* Better organization
+* Reduced redundancy
+
+---
+
+### 🔹 Basic Syntax
+
+```cpp
+class Parent {
+public:
+    void show() {
+        cout << "Parent Function\n";
+    }
+};
+
+class Child : public Parent {
+};
+```
+
+```cpp
+Child obj;
+obj.show();  // inherited function
+```
+
+---
+
+### 🔹 Access Modes in Inheritance
+
+| Mode      | Public Members | Protected Members |
+| --------- | -------------- | ----------------- |
+| Public    | Public         | Protected         |
+| Protected | Protected      | Protected         |
+| Private   | Private        | Private           |
+
+---
+
+## 📅 Day 5: Types of Inheritance
+
+---
+
+### 🔹 1. Single Inheritance
+
+One child inherits from one parent.
+
+```cpp
+class A {};
+class B : public A {};
+```
+
+---
+
+### 🔹 2. Multilevel Inheritance
+
+Chain of inheritance (A → B → C)
+
+```cpp
+class A {};
+class B : public A {};
+class C : public B {};
+```
+
+---
+
+### 🔹 3. Multiple Inheritance
+
+One class inherits from multiple parents.
+
+```cpp
+class A {};
+class B {};
+class C : public A, public B {};
+```
+
+---
+
+### 🔹 4. Hierarchical Inheritance
+
+Multiple classes inherit from one parent.
+
+```cpp
+class A {};
+class B : public A {};
+class C : public A {};
+```
+
+---
+
+### 🔹 5. Hybrid Inheritance
+
+Combination of different inheritance types.
+
+---
+
+## 🔹 Real-World Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+// Parent Class
+class Vehicle {
+public:
+    void start() {
+        cout << "Vehicle starts\n";
+    }
+};
+
+// Child Class
+class Car : public Vehicle {
+public:
+    void drive() {
+        cout << "Car is driving\n";
+    }
+};
+
+int main() {
+    Car c;
+    c.start();  // inherited
+    c.drive();  // own function
+}
+```
+
+👉 Example:
+
+* Vehicle → Parent
+* Car → Child
+
+---
+
+## 📌 Key Takeaways
+
+* Inheritance enables **code reuse**
+* Helps build real-world relationships
+* Multiple types exist for different use cases
+* Access specifiers control visibility
+
+---
+
+## 🚀 Next (Day 6)
+
+* Polymorphism
+* Function Overloading
+* Operator Overloading
 
 ## 🧠 Author
 
