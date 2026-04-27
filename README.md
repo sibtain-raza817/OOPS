@@ -689,11 +689,123 @@ int main() {
 
 ---
 
-## 🚀 Next (Day 6)
+# 📘 OOPS Journey - Day 6
+
+Today I learned **Polymorphism**, which allows objects to behave differently based on context, making programs more flexible and powerful.
+
+---
+
+## 📅 Topics Covered
 
 * Polymorphism
 * Function Overloading
 * Operator Overloading
+* Virtual Functions
+
+---
+
+## 🔹 1. Polymorphism
+
+Polymorphism means **"many forms"**.
+
+👉 Same function name, different behavior
+👉 Achieved using:
+
+* Compile-time polymorphism
+* Runtime polymorphism
+
+---
+
+## 🔹 2. Function Overloading (Compile-Time)
+
+Same function name with different parameters.
+
+```cpp id="j9zqha"
+class Math {
+public:
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+};
+```
+
+---
+
+## 🔹 3. Operator Overloading
+
+Operators can be redefined for user-defined types.
+
+```cpp id="c8twx4"
+class Complex {
+public:
+    int real, imag;
+
+    Complex(int r, int i) {
+        real = r;
+        imag = i;
+    }
+
+    // Overloading + operator
+    Complex operator + (Complex obj) {
+        return Complex(real + obj.real, imag + obj.imag);
+    }
+};
+```
+
+---
+
+## 🔹 4. Virtual Function (Runtime Polymorphism)
+
+* Declared using `virtual` keyword
+* Achieves **runtime polymorphism**
+* Calls function based on object type
+
+```cpp id="s7t2ps"
+class Base {
+public:
+    virtual void show() {
+        cout << "Base class\n";
+    }
+};
+
+class Derived : public Base {
+public:
+    void show() {
+        cout << "Derived class\n";
+    }
+};
+```
+
+```cpp id="kz8h1f"
+Base* ptr;
+Derived d;
+
+ptr = &d;
+ptr->show();  // calls Derived version
+```
+
+---
+
+## 📌 Key Takeaways
+
+* Polymorphism = same interface, different behavior
+* Function overloading works at compile time
+* Operator overloading improves readability
+* Virtual functions enable runtime decision making
+
+---
+
+## 🚀 Next (Day 7)
+
+* Abstraction (Advanced)
+* Pure Virtual Functions
+* Abstract Classes
+
+
 
 ## 🧠 Author
 
