@@ -799,11 +799,180 @@ ptr->show();  // calls Derived version
 
 ---
 
-## 🚀 Next (Day 7)
 
-* Abstraction (Advanced)
-* Pure Virtual Functions
-* Abstract Classes
+# 📘 OOPS Journey - Day 7
+
+Today I learned **Exception Handling**, which helps handle runtime errors gracefully without crashing the program.
+
+---
+
+## 📅 Topics Covered
+
+* Exception Handling
+* try, catch, throw
+* Multiple catch blocks
+* Generic catch (`...`)
+
+---
+
+## 🔹 1. What is Exception Handling?
+
+Exception handling is used to **handle runtime errors** and maintain normal program flow.
+
+👉 Prevents program crashes
+👉 Improves reliability
+
+---
+
+## 🔹 2. Basic Syntax
+
+```cpp id="c9b4xk"
+try {
+    // risky code
+}
+catch(type e) {
+    // handle error
+}
+```
+
+---
+
+## 🔹 3. throw Keyword
+
+Used to **throw an exception** when an error occurs.
+
+```cpp id="c2i7zx"
+int a = 10, b = 0;
+
+if (b == 0) {
+    throw "Division by zero error";
+}
+```
+
+---
+
+## 🔹 4. try-catch Example
+
+```cpp id="3q0y9p"
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 10, b = 0;
+
+    try {
+        if (b == 0)
+            throw "Cannot divide by zero";
+
+        cout << a / b;
+    }
+    catch (const char* msg) {
+        cout << "Error: " << msg;
+    }
+
+    return 0;
+}
+```
+
+---
+
+## 🔹 5. Multiple Catch Blocks
+
+```cpp id="2kqg7z"
+try {
+    throw 10;
+}
+catch (int e) {
+    cout << "Integer exception\n";
+}
+catch (...) {
+    cout << "Unknown exception\n";
+}
+```
+
+---
+
+## 🔹 6. Generic Catch (`...`)
+
+* Catches any type of exception
+* Should be written **last**
+
+##Code:
+#include <iostream>
+using namespace std;
+
+class Customer{
+    string name;
+    int balance;
+    int age;
+
+    public:
+    Customer(string name, int balance, int age){
+        this->name = name;
+        this->balance = balance;
+        this->age = age;
+    }
+
+    void deposite(int amount){
+        if(amount > 0){
+            balance =+ amount;
+            cout<<amount<<"rs is credited successfully"<<endl;
+        }else{
+            cout<<"Amount shold be grater than 0\n";
+        }
+    }
+    void  widhraw(int amount){
+        if(amount > 0 && amount < balance){
+            balance -= amount;
+            throw "rs is debited successfully";
+        }
+        else if(amount < 0){
+            throw "Amount should be greater than 0";
+        }else{
+            throw "Your balance is low!";
+        }
+    }
+};
+int main()
+{
+    Customer C1("Raza", 5000, 18);
+    try
+    {
+        C1.deposite(100);
+        C1.widhraw(6000);
+    }
+    catch(const char  *e)
+    {
+        cout<<"Exception Occured: "<<e<<endl;
+    }
+    
+    
+return 0;
+}
+
+/*
+OUTPUT:-
+100rs is credited successfully
+Exception Occured: Your balance is low!
+*/
+
+## 📌 Key Takeaways
+
+* `try` → code that may cause error
+* `throw` → used to signal an error
+* `catch` → handles the error
+* Multiple catch blocks improve handling
+* `...` catches unknown exceptions
+
+---
+
+## 🚀 Next (Optional Advanced)
+
+* Custom Exceptions
+* Exception Handling with Classes
+* File Handling
+
+---
 
 
 
